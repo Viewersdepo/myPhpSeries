@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_GET['name'])){
 	//print_r($_GET);
 	 $name= htmlentities($_GET['name']);
@@ -37,6 +38,7 @@ if(isset($_REQUEST['name'])){
 		</div>
 		<input type="submit" value ="Submit">
 	</form>
+
 	<ul>
 		<li>
 			<a href="post_get.php?name=Uzoamaka">Uzoamaka</a>
@@ -45,6 +47,11 @@ if(isset($_REQUEST['name'])){
 			<a href="post_get.php?name=Jerry">Jerry</a>
 		</li>
 	</ul>
-	<h1><?php echo "{$name}'s Profile"; ?></h1>;
+
+	<h1><?php if (isset($name)){
+	 echo "{$name}'s Profile";
+	 }
+	  ?></h1>
+	
 </body>
 </html>
