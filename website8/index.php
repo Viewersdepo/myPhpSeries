@@ -1,10 +1,18 @@
 <?php
-	//Create Connection
-	$conn= mysqli_connect('localhost', 'root', 'uzo123amaka', 'phpblog');
+	require('config/DB.php');
 
-	//Check the connection
-	if (mysqli_connect_errno()) {
-		//Conection Failed 
-		echo 'Failed to connect to MYSQL '.mysqli_connect_errno();
-	}
+	$query= 'SELECT * FROM posts';
+
+	//Get Result
+	$result= mysqli_query($conn, $query);
+
+	//Fetch data
+	$posts=mysqli_fetch_all($result, MYSQLI_ASSOC);
+	var_dump($posts);
+
+	//Free Result
+	//mysqli_free_result($result);
+
+	//close Connection
+	//mysqli_close($conn);
 ?>
