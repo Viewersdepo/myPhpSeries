@@ -2,6 +2,24 @@
 	require('config/config.php');
 	require('config/DB.php');
 
+
+
+	//Check For Delete
+	if (isset($_POST['delete'])) {
+		//Get form data
+		$delete_id=mysqli_real_escape_string($conn, $_POST['delete_id']);
+
+		$query= "DELETE FROM post WHERE Id= {$delete_id}";
+
+		if (mysqli_query($conn, $query)) {
+			header('Location: '.ROOT_URL.'');
+		}else{
+			echo 'ERROR: '.mysqli_error($conn);
+		}
+		
+	}
+
+
 	//get ID
 	$id=mysqli_real_escape_string($conn, $_GET['Id']);
 
@@ -32,7 +50,18 @@
 			<small>Created on <?php echo $post['created_at']; ?> by <?php echo $post['author'];?></small>
 			<p><?php echo $post['body'];?></p>
 			<hr>
-			<a href="<?php echo ROOT_URL;?>editPost.php?id=<?php echo $post['id'];?>" class="btn btn-default">Edit</a>
+				<div class="d-flex row">
+					<div class="col-sm-2 d-flex">
+						<a href="<?php echo ROOT_URL; ?>editPost.php?Id=<?php echo $post['Id'];?>" class="btn btn-default ">Edit</a>
+					</div>
+
+					<div class="col-sm-2 text-right">
+						<form class="text-right d-flex" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+						<input type="hidden" name="delete_id" value="<?php echo $post['Id'];?>">
+						<input type="submit" name="delete" value="Delete" class="btn btn-danger">
+						</form>
+					</div>
+			</div>
 		</div>
 	<?php include('inc/footer.php') ?>
 

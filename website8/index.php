@@ -24,13 +24,13 @@
 
 	<?php include('inc/header.php');?>
 		<div class="container">
-				<h1>Posts</h1>
+				<h1 class="container">Posts</h1>
 				<?php foreach($posts as $post) : ?>
-				<div class="jumbotron">
+				<div>
 					<h3><?php echo $post['title']; ?></h3>
 					<small>Created on <?php echo $post['created_at']; ?> by <?php echo $post['author'];?></small>
 					<p><?php echo $post['body'];?></p>
-					<a class="btn btn-primary" href="<?php echo ROOT_URL;?>post.php?Id=<?php echo $post['Id']; ?>">Read More</a>
+					<a class="btn btn-primary" href="<?php echo ROOT_URL;?>post.php?Id=<?php echo $post['Id']; ?>">Read More</a><hr>
 				</div>
 
 			<?php endforeach; ?>
