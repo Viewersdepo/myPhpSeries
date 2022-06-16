@@ -51,12 +51,12 @@
 			<p><?php echo $post['body'];?></p>
 			<hr>
 				<div class="d-flex row">
-					<div class="col-sm-2 d-flex">
+					<div class="col">
 						<a href="<?php echo ROOT_URL; ?>editPost.php?Id=<?php echo $post['Id'];?>" class="btn btn-default ">Edit</a>
 					</div>
 
-					<div class="col-sm-2 text-right">
-						<form class="text-right d-flex" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					<div class="col">
+						<form class="text-right" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 						<input type="hidden" name="delete_id" value="<?php echo $post['Id'];?>">
 						<input type="submit" name="delete" value="Delete" class="btn btn-danger">
 						</form>
